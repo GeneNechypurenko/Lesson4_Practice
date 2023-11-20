@@ -28,8 +28,7 @@ namespace Lesson4_Practice
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            string message = $"Button {button.Content} clicked!";
-            MessageBox.Show(message, "Button Clicked", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show($"Button {button.Content} clicked!");
         }
     }
 }
