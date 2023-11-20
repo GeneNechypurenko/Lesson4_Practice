@@ -1,0 +1,36 @@
+﻿<Window x:Class="task3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:task3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="900">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*">
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Calendar Grid.Column="1" x:Name="eventCalendar" SelectedDatesChanged="EventCalendar_SelectedDatesChanged" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10">
+            <TextBlock Text="Event Details" FontWeight="Bold" FontSize="16"/>
+            <Label Content="Event Date:"/>
+            <DatePicker x:Name="eventDatePicker" SelectedDate="{Binding ElementName=eventCalendar, Path=SelectedDate}" Margin="0,0,0,10"/>
+            <Label Content="Event Title:"/>
+            <TextBox x:Name="eventTitleTextBox" Margin="0,0,0,10"/>
+            <Label Content="Event Description:"/>
+            <TextBox x:Name="eventDescriptionTextBox" Margin="0,0,0,10"/>
+            <Button Content="Add Event" Click="AddEventButton_Click"/>
+        </StackPanel>
+        <ListView x:Name="eventListView" Grid.Row="1" Margin="10" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Date" DisplayMemberBinding="{Binding Date}" Width="200"/>
+                    <GridViewColumn Header="Title" DisplayMemberBinding="{Binding Title}" Width="200"/>
+                    <GridViewColumn Header="Description" DisplayMemberBinding="{Binding Description}" Width="260"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
